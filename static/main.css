@@ -1,0 +1,25 @@
+
+.body{
+
+    align-items: center;
+    justify-content: center ;
+
+}
+
+.tbl{
+
+    border: 1px solid blue;
+    height: 120px;
+    width: 1500px;
+    margin: auto;
+
+}
+
+.rgr-tbl{
+
+    border: 1px solid blue;
+    height: 300px;
+    width: 1500px;
+    margin: auto;
+    
+}
