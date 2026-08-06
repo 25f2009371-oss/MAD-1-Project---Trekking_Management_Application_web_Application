@@ -3,61 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bookings</title>
+    <title>Arohan - Bookings</title>
     <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
+    
 
-<div class="container">
 
-    <!-- Left Menu -->
-    <div class="sml-container">
 
-        <button style="width:100%; height:50px;">Home</button>
-        <button style="width:100%; height:50px;">Browse Treks</button>
-        <button style="width:100%; height:50px; border:2px solid black;">My Bookings</button>
-        <button style="width:100%; height:50px;">Profile</button>
-        <button style="width:100%; height:50px;">Logout</button>
 
-    </div>
 
-    <!-- Right Side -->
-    <div class="innr-container">
+<div class="cntr" style="border: 1px solid black; height: 800px; width: 2000px; margin:0 auto; display:flex;
+    justify-content:center;   
+    align-items:center;">
 
-        <div class="admn-head">
-
-            <h1>My Bookings</h1>
-
-            <input type="search" style="width:800px; height:30px;">
-            <input type="button" value="Search" style="height:30px;">
-
-            <br><br>
-
-            <table border="1">
-
-                <tr>
-                    <td>Booking ID</td>
-                    <td>Trek Name</td>
-                    <td>Booking Date</td>
-                    <td>Status</td>
-                    <td>Action</td>
-                </tr>
-
-                <tr>
-                    <td>XXXX</td>
-                    <td>XXXX</td>
-                    <td>XXXX</td>
-                    <td>XXXX</td>
-                    <td><input type="button" value="View"></td>
-                </tr>
-
-            </table>
-
-        </div>
-
-    </div>
+<div>
+<input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" disabled><br>
+<a href="all_treks.html"><input type="button" value="Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="all_staff.html"><input type="button" value="Staff" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="all_users.html"><input type="button" value="Users" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="Bookings.html"><input type="button" value="Bookings" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="login.html"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
 
 </div>
 
+<div class="incntr" style="border: 1px solid blue; height: 600px; width: 1000px; margin:0 auto; align-items: center;">
+
+    <br>
+    <br>
+
+<h1>Bookings</h1>
+<br>
+<br>
+<div style="margin: 0 auto;">
+&nbsp;&nbsp;&nbsp;<input type="search" name="search" id="search" style="width: 800px; height: 30px;">
+<input type="button" value="search" style="height: 30px;">
+</div>
+<br>
+<br>
+<table border="1px solid black">
+<tr>
+<td>Booking_ID</td>
+<td>Name</td>
+<td>Booking_Date</td>
+<td>Status</td>
+<td>Actions</td>
+</tr>
+
+<tr>
+<td>XXX</td>
+<td>XXXX</td>
+<td>XXXX</td>
+<td>XXXX</td>
+<td>XXXXXX</td>
+</tr>
+
+</table>
+
+
+</div>
+</div>
+    
 </body>
 </html>
