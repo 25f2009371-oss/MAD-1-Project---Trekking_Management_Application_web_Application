@@ -1,6 +1,6 @@
 .container{
-    width:1200px;
-    height:600px;
+    width:1300px;
+    height:800px;
     border:1px solid black;
     margin:auto;
     display:flex;
@@ -10,7 +10,7 @@
 
 .innr-container{
     width:1000px;
-    height:500px;
+    height:700px;
     border:1px solid blue;
     display:flex;
     justify-content:center;
@@ -23,4 +23,13 @@
 
 .login-box table{
     margin:auto;
+}
+
+.sml-container{
+
+    border: 1px solid blue;
+    width: 280px;
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
