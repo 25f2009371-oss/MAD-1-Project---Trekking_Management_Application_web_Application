@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Giryarohi</title>
+    <title>Arohan - Login Page</title>
     <link rel="stylesheet" href="/static/main.css">
-
 </head>
 <body>
 
-<div class="lgn-cntr" style="border: 1px solid black; height: 300px; width: 1510px; text-align: center; align-items: center;">
-<h1>Welcome to Giryarohi</h1>
+<div class="container">
+<div class="innr-container">
+<div class="login-box"><h1>Login</h1>
 
-<div class="lgn-tbl">
 <table>
-<h2>Register Page</h2>    
+    <tr><td>Email</td><td><input type="text"></td></tr>
+    <tr><td>Password</td><td><input type="password"></td></tr>
+</table>
+<br>
+<input type="button" value="Login" style="width: 250px; height: 40px;"></td>
+        <!--<td><a href="login.html">Already Registered?</a></td>--></tr>
+<br>
+<br>
 
-<tr><td>Email: </td>  <td><input type="email"></td>  </tr>
-<tr><td>Password: </td> <td><input type="password"></td></tr>
-<tr><td><input type="submit" value="Login"></td><td><a href="register.html">Not a User?</a></td></tr>
+<input type="button" value="Not Registered?" style="width: 250px; height: 40px;" onclick="window.location.href='Register.html'">
 
-</table>    
+
 
 </div>
 </div>
+</div>
+
 
 </body>
 </html>

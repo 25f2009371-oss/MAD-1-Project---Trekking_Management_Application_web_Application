@@ -3,35 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Giryarohi</title>
+    <title>Arohan - Register Page</title>
     <link rel="stylesheet" href="/static/main.css">
-
 </head>
 <body>
 
-<div class="rgr-cntr" style="border: 1px solid black; height: 500px; width: 1510px; 
-     display: flex; flex-direction: column; justify-content: center; align-items: center;"">
-<h1>Welcome to Giryarohi</h1>
+<div class="container">
+<div class="innr-container">
+<div class="login-box"><h1>Login</h1>
 
-<div class="rgr-tbl" style="text-align: center;">
 <table>
+    <tr><td>Full Name: </td><td><input type="text"></td></tr>
+    <tr><td>Email</td><td><input type="text"></td></tr>
+    <tr><td>Password</td><td><input type="password"></td></tr>
+    <tr><td>Age</td><td><input type="number"></td></tr>
+    <tr><td>I am a</td><td>
+<select name="utype" class="utype-box" style="width: 170px; height: 25px;">
+<option value="None">None</option>
+<option value="Patient">Trek Staff</option>
+<option value="Doctor">Users</option>
+</td></tr>
+</table>
 
-<h2>Register Page</h2>    
+<br>
+<input type="button" value="Register" style="width: 250px; height: 40px;"></td>
+        <!--<td><a href="login.html">Already Registered?</a></td>--></tr>
+<br>
+<br>
 
-<tr><td>Email: </td>  <td><input type="email"></td>  </tr>
-<tr><td>Password: </td> <td><input type="password"></td></tr>
-<tr><td>Name: </td> <td><input type="text"></td></tr>
-<tr><td>Age: </td> <td><input type="number"></td></tr>
+<input type="button" value="Already Registered?" style="width: 250px; height: 40px;" onclick="window.location.href='login.html'">
 
-
-
-
-<tr><td><input type="submit" value="Login"></td><td><a href="Login.html">Already a User?</a></td></tr>
-
-</table>    
 
 </div>
 </div>
+</div>
+
 
 </body>
 </html>
