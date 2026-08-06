@@ -6,14 +6,25 @@
 
 }
 
-.tbl{
+.lgn-tbl{
 
     border: 1px solid blue;
-    height: 120px;
+    height: 200px;
     width: 1500px;
-    margin: auto;
+    justify-content: center;
+    margin: 0 auto;
+    
+
 
 }
+
+.lgn-tbl table {    
+    margin: 0 auto;
+
+
+}
+
+
 
 .rgr-tbl{
 
@@ -23,3 +34,8 @@
     margin: auto;
     
 }
+
+.rgr-tbl table {
+    margin: 0 auto;
+}
+
