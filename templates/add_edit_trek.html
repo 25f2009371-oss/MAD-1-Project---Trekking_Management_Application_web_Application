@@ -9,6 +9,20 @@
 <body>
 
 <div class="container">
+<div>
+<input type="button" value="Home" style="width: 290px; height: 50px; margin: 0 auto;    "><br>
+<input type="button" value="Treks" style="width: 290px; height: 50px; margin: 0 auto;"><br>
+<input type="button" value="Staff" style="width: 290px; height: 50px; margin: 0 auto;"><br>
+<input type="button" value="Users" style="width: 290px; height: 50px; margin: 0 auto;"><br>
+<input type="button" value="Bookings" style="width: 290px; height: 50px; margin: 0 auto;"><br>
+<input type="button" value="logout" style="width: 290px; height: 50px; margin: 0 auto;">
+
+</div>
+
+
+
+
+
 <div class="innr-container">
 <div class="admn-head" style="text-align: center;"><h2>Admin Dashboard</h2>
 <br>
@@ -21,13 +35,13 @@
 <br>
 <div>
 <table>
+    
 <tr><td>Trek Name</td><td><input type="text"></td></tr>
 <tr><td>Location</td><td><input type="text"></td></tr>
 <tr><td>Difficulty</td><td><input type="text"></td></tr>
 <tr><td>Duration(Days)</td><td><input type="text"></td></tr>
 <tr><td>Available</td><td><input type="text"></td></tr>
 </table>
-</div>
 
 <div>
 <table>
@@ -35,6 +49,11 @@
 <tr><td>End Date</td><td><input type="date"></td></tr>
 <tr><td>Difficulty</td><td><input type="text"></td></tr>
 <tr><td>Assign Staff</td><td>
+<select name="utype" class="utype-box" style="width: 170px; height: 25px;">
+<option value="None">None</option>
+<option value="Trekker">Amit</option>
+<option value="Trekker Staff">akash</option>
+
 
 </td></tr>
 
@@ -42,8 +61,7 @@
     <input type="text"></td></tr>
 
 <tr><td>Description</td><td>
-    <input type="textarea" ></td></tr>
-
+<textarea rows="7" cols="25" placeholder="Type here..."></textarea>
 
 </table>    
 </div>
