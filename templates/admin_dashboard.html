@@ -11,8 +11,6 @@
     height:800px;
     border:1px solid black;
     margin:auto; ">
-
-
 <div>
 <input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" disabled><br>
 <a href="manage_treks.html"><input type="button" value="Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
@@ -24,43 +22,42 @@
 
 
 
-
-
-
 <div class="innr-container" style="    width:1000px;
     height:700px;
     border:1px solid blue;">
 <div class="admn-head" style="text-align: center;"><h2>Admin Dashboard</h2>
 <br>
 
+{% for d in app_dict %}
+
 <div style="text-align: left;"><h3>Dashboard</h3></div>
 <div class="sml-container">
 <h4>Total treks: </h4>
-&nbsp; <p>42</p>
+&nbsp; <p>{{ d.t_treks }}</p>
 </div>
 
 
 <div class="sml-container">
 <h4>Total Users: </h4>
-&nbsp; <p>120</p>
+&nbsp; <p>{{ d.t_users }}</p>
 
 
 </div>
 
 <div class="sml-container">
 <h4>Total Staffs: </h4>
-&nbsp; <p>18</p>
+&nbsp; <p>{{ d.t_staffs }}</p>
 
 
 </div>
 
 <div class="sml-container">
 <h4>Total Bookings:  </h4>
-&nbsp; <p>185</p>
+&nbsp; <p>{{ d.t_booking }}</p>
 
 
 </div>
-
+{% endfor %}
 
 
 
@@ -69,14 +66,15 @@
 <div class="adm-dash" style="text-align: left;"><h4>Recent Bookings</h4></div>
 <table border="1px solid black;">
 
-<tr><td>Booking ID</td><td>User</td><td>User</td>
-<td>Booking Date</td><td>Status</td></tr>
-<tr><td>B001</td><td>Amit Sharma</td><td>Everest base camp</td>
-<td>12 august 2026</td><td>Booked</td></tr>
-<tr><td>B002</td><td>Amia</td><td>East base camp</td>
-<td>14 august 2026</td><td>Booked</td></tr>
-<tr><td>B001</td><td>Narma Ga</td><td>Kedarnath trek</td>
-<td>1 july 2026</td><td>Cancelled</td></tr>
+<tr><th>Booking ID</th><th>User</th><td>Camp</th>
+<th>Booking Date</th><th>Status</th></tr>
+
+{% for d in app_data %}
+
+<tr><td>{{d.b_id}}</td><td>{{d.uname}}</td><td>{{d.camp}}</td>
+<td>{{d.b_date}}</td><td>{{d.status}}</td></tr>
+
+{% endfor %}
 
 </table>
 <!--view allboking-->
