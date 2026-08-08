@@ -24,19 +24,39 @@ def login():
     if request.method == "POST":
         uname = request.form.get("emailid")
         pwd = request.form.get("pwd")        
-        user = db.session.query(User).filter(User.email == uname, User.password == pwd).first()
+        user = db.session.query(User).filter(User.email == uname).first()
         if user and str(user.role) == "0":
             return redirect(url_for('admin'))
+
+        elif user and str(user.role)=="1":
+            return redirect(url_for('staff'))
+
         else:
             return redirect(url_for("register"))
 
     return render_template('login.html')
 
 
-@app.route('/register', methods=['GET','POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
+    if request.method == "POST":
+        uname = request.form.get("emailid")
+        pwd = request.form.get("pwd")
+        role = request.form.get("utype")
 
+        user = db.session.query(User).filter(User.email == uname).first()
+
+        if user:
+            return render_template("register.html", err_msg="Sorry, email is already used, use another email")
+        else:
+            name = request.form.get("nam")
+            phone = request.form.get("phn")
+            uc = User(email=uname, password=pwd, role=role, full_name=name, phone=phone, status="Active")
+            db.session.add(uc)
+            db.session.commit() 
+            return redirect(url_for('login')) 
+
+    return render_template('register.html')
 
 @app.route('/admin_dashboard')
 def admin():

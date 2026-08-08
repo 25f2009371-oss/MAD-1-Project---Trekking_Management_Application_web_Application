@@ -26,7 +26,7 @@ class Trek(db.Model):
     available_slots = db.Column(db.Integer, nullable=False)
     status = db.Column(db.String(20), nullable=False)
     description = db.Column(db.String(500), nullable=False)
-    assigned_staff_id = db.Column(db.Integer, nullable=True)  
+    assigned_staff_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=True)    
     bookings = db.relationship("Booking", cascade="all,delete", backref="trek")
 
 class Booking(db.Model):
