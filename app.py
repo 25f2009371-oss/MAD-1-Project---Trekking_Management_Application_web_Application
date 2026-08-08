@@ -38,6 +38,11 @@ def admin():
 def manageadmin():
     return render_template("manage_treks.html")
 
+@app.route("/add_edit_trek")
+def add_edit_trek():
+    return render_template("add_edit_trek.html")
+
+
 @app.route('/all_staffs')
 def admin_staff():
     return render_template("all_staff.html")

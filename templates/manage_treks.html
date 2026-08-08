@@ -22,7 +22,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="add_edit_trek.html"><input type="button" value="+ Add New Treks" style="color:blue; height: 30px;"></a>
+    <a href="/add_edit_trek"><input type="button" value="+ Add New Treks" style="color:blue; height: 30px;"></a>
 
 </h1>
 <input type="search" name="search" id="search" style="width: 800px; height: 30px;">
@@ -34,7 +34,7 @@
 <tr><th>ID</th><th>Trek Name</th><th>Location</th><th>Difficulty</th><th>Slots</th><th>Status</th><th>Actions</th></tr>
 
 {% for d in trekdata %}
-<tr><td>{{d.id}}</td><td>{{d.trekname}}</td><td>{{d.location}}</td><td>{{d.difficulty}}</td><td>{{d.slots}}</td><td>{{d.status}}</td><td>&nbsp;<a href="add_edit_trek.html"><input type="button" value="edit" style="color:white; background-color: green;">&nbsp;</a><input type="button" value="delete" style="background-color: blueviolet; color: aliceblue;"></td></tr>
+<tr><td>{{d.id}}</td><td>{{d.trekname}}</td><td>{{d.location}}</td><td>{{d.difficulty}}</td><td>{{d.slots}}</td><td>{{d.status}}</td><td>&nbsp;<a href="/add_edit_trek"><input type="button" value="edit" style="color:white; background-color: green;">&nbsp;</a><input type="button" value="delete" style="background-color: blueviolet; color: aliceblue;"></td></tr>
 {% endfor %}
 
 
