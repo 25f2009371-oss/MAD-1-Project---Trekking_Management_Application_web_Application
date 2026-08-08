@@ -31,6 +31,9 @@ def login():
         elif user and str(user.role)=="1":
             return redirect(url_for('staff'))
 
+        elif user and str(user.role)=="2":
+                    return redirect(url_for('trekker'))
+
         else:
             return redirect(url_for("register"))
 
