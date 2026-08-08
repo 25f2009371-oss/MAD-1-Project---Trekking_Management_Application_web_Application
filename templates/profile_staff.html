@@ -29,10 +29,14 @@
 
 <div class="incntr" style="border: 1px solid blue; height: 600px; width: 1000px; margin:0 auto; align-items: center;">
 
-<p><b>Name:</b> XXX</p>
-<p><b>Email:</b> XXX</p>
-<p><b>Contact:</b> XXX</p>
-<p><b>Status:</b> XXX</p>
+{% for d in app_dict %}
+<p><b>Name:</b>{{% d %}}</p>
+<p><b>Email:</b>{{% d %}}</p>
+<p><b>Contact:</b>{{% d %}}</p>
+<p><b>Booking Date:</b> {{% d %}}</p>
+<p><b>Status:</b>{{% d %}}</p>
+&nbsp;
+{% endfor %}
 <input type="button" value="Edit Profile" style="color: blue;">
 
 </div>

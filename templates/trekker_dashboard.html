@@ -33,23 +33,32 @@
 
 <div class="usr-dash" style="text-align: left;"><h4>Avaible Treks</h4></div>
 <table border="1px solid black;">
-<tr><td>Trek Name</td><td>Location</td><td>Difficulty</td>
-<td>Duration</td><td>Available Slots</td><td>Actions</td></tr>
+<tr><th>Trek Name</th><th>Location</th><td>Difficulty</th>
+<th>Duration</th><th>Available Slots</th><th>Actions</th></tr>
 
-<tr><td>XXXXX</td><td>XXX</td><td>XXXXX</td>
-<td>XXXXXXX</td><td>XXXXXXXXXX</td><td>XXXXX</td></tr>
+
+{% for d in app_dict %}
+<tr><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td>
+<td>{{d}}</td><td>{{d}}</td><td><a href="#"><input type="button" value="Book Now" style="color:white; background-color: brown;"></td></tr>
+{% endfor %}
+
 </table>
+
 
 
 <div class="usr-dash" style="text-align: left;"><h4>My bookings</h4></div>
 <table border="1px solid black;">
-<tr><td>Trek Name</td><td>Booking Date</td><td>Status</td>
-<td>Action</td></tr>
+<tr><th>Trek Name</th><th>Booking Date</th><th>Status</th>
+<th>Action</th></tr>
 
-<tr><td>XXXX</td><td>XXXX</td><td>XXXXX</td>
+
+{% for d in app_dict %}
+
+<tr><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td>
 <td><a href="#"><input type="button" value="View Details" style="color: blue;"></a></td></tr>
-</table>
+{% endfor %}
 
+</table>
 
 <!--view allboking-->
 <br>

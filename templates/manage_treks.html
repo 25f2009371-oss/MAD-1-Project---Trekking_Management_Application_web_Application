@@ -38,9 +38,11 @@
 
 <div style="align-items: center; justify-content: center;">
 <table border="1px solid black">
-<tr><td>ID</td><td>Trek Name</td><td>Location</td><td>Difficulty</td><td>Slots</td><td>Status</td><td>Actions</td></tr>
-<tr><td>X</td><td>XXXXXX</td><td>XXXXXXXXXX</td><td>XXXXXXXXXX</td><td>XXXXXX</td><td>XXXXXXXXX</td><td><a href="add_edit_trek.html"><input type="button" value="edit"></a><input type="button" value="delete"></td></tr>
+<tr><th>ID</th><th>Trek Name</th><th>Location</th><th>Difficulty</th><th>Slots</th><th>Status</th><th>Actions</th></tr>
 
+{% for d in trekdata %}
+<tr><td>{{d.id}}</td><td>{{d.trekname}}</td><td>{{d.location}}</td><td>{{d.difficulty}}</td><td>{{d.slots}}</td><td>{{d.status}}</td><td>&nbsp;<a href="add_edit_trek.html"><input type="button" value="edit" style="color:white; background-color: green;">&nbsp;</a><input type="button" value="delete" style="background-color: blueviolet; color: aliceblue;"></td></tr>
+{% endfor %}
 
 
 

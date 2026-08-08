@@ -59,11 +59,13 @@
 <div class="adm-dash" style="text-align: left;"><h4>Assigned Treks</h4></div>
 <table border="1px solid black;">
 
-<tr><td>Track Name</td><td>Location</td><td>Participants</td>
-<td>Slots</td><td>Status</td><td>Action</td></tr>
-<tr><td>XXXXX</td><td>XXXXXXXXXX</td><td>XXXXXXXXX</td>
-<td>XXXXXXX</td><td>XXXXXX</td><td><a href="staff_trek_manage.html"><input type="button" value="Manage"></a></td></tr>
+<tr><th>Track Name</th><th>Location</th><th>Participants</th>
+<th>Slots</th><th>Status</th><th>Action</th></tr>
 
+{% for d in app_dict %}
+<tr><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td>
+<td>{{d}}</td><td>{{d}}</td><td><a href="staff_trek_manage.html"><input type="button" value="Manage" style="background-color: blueviolet; color: aliceblue;"></a></td></tr>
+{% endfor %}
 </table>
 <br>
 <div style="text-align: right;"><a href="my_bookings.html">View All My Treks</a>

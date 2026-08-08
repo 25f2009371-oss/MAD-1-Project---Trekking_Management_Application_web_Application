@@ -41,24 +41,25 @@
 <br>
 <br>
 <table border="1px solid black">
-<tr>
-<td>User_ID</td>
-<td>Name</td>
-<td>Email</td>
-<td>Contact</td>
-<td>Status</td>
-<td>Actions</td>
-</tr>
 
 <tr>
-<td>XXX</td>
-<td>XXXX</td>
-<td>XXXX</td>
-<td>XXXXX</td>
-<td>XXXX</td>
-<td>XXXXXX</td>
+<th>User_ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Contact</th>
+<th>Status</th>
+<th>Actions</th>
 </tr>
-
+{% for d in mng_usr %}
+<tr>
+<td>{{d.uid}}</td>
+<td>{{d.name}}</td>
+<td>{{d.email}}</td>
+<td>{{d.phone}}</td>
+<td>{{d.status}}</td>
+<td><a href="add_edit_trek.html">&nbsp; <input type="button" value="edit" style="background-color: brown; color:aliceblue">&nbsp;</a><input type="button" value="delete" style="color:white; background-color: navy;">&nbsp;</td>
+</tr>
+{% endfor %}
 </table>
 
 

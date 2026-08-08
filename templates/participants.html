@@ -27,14 +27,24 @@
 <h4>participants</h4>
 <div>
 <table border="1px solid black">
-<tr><td>Name</td>
-<td>Email</td>
-<td>Contact</td>
-<td>Booking Date</td>
-<td>Status</td>
+<tr><th>Name</th>
+<th>Email</th>
+<th>Contact</th>
+<th>Booking Date</th>
+<th>Status</th>
 
 </tr>
 
+{% for d in app_dict %}
+<tr>
+<td>{{d}}</td>
+<td>{{d}}</td>
+<td>{{d}}</td>
+<td>{{d}}</td>
+<td>{{d}}</td>
+</tr>
+
+{% endfor %}
 
 
 </table>

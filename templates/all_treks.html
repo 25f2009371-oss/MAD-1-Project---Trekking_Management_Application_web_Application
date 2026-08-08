@@ -30,9 +30,12 @@
 
 <div style="align-items: center; justify-content: center;">
 <table border="1px solid black">
-<tr><td>ID</td><td>Trek Name</td><td>Location</td><td>Difficulty</td><td>Slots</td><td>Status</td></tr>
-<tr><td>X</td><td>XXXXXX</td><td>XXXXXXXXXX</td><td>XXXXXXXXXX</td><td>XXXXXX</td><td>XXXXXXXXX</td> </tr>
 
+
+<tr><th>ID</th><td>Trek Name</th><th>Location</th><th>Difficulty</th><th>Slots</th><th>Status</th></tr>
+{% for d in app_dict %}
+<tr><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td> </tr>
+{% endfor %}
 
 
 </table>

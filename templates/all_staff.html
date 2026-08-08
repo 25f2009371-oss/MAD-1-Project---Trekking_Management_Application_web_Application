@@ -26,18 +26,20 @@
 <div class="admn-head"><h1>Staff Requests
 
 <div class="staff-status">
-    <input type="button" value="Pending">
-    <input type="button" value="Approved">
-    <input type="button" value="Blacklisted">
+    <input type="button" value="Pending" style="background-color: blueviolet; color: antiquewhite;">
+    <input type="button" value="Approved" style="background-color: aquamarine; color: rebeccapurple;">
+    <input type="button" value="Blacklisted" style="background-color:brown; color: aliceblue;">
 </div>
 
     </h1>
 
 <div style="align-items: center; justify-content: center;">
 <table border="1px solid black">
-<tr><td>Staff ID</td><td>Name</td><td>Email</td><td>Contact</td><td>Status</td><td>Actions</td></tr>
-<tr><td>XXXXXX</td><td>XXXXXXXXXX</td><td>XXXXXXXXXX</td><td>XXXXXX</td><td>XXXXXXXXX</td><td>&nbsp;<input type="button" value="Approve">&nbsp; &nbsp;<input type="button" value="Reject">&nbsp;</td></tr>
+<tr><th>Staff ID</th><th>Name</th><th>Email</th><th>Contact</th><th>Status</th><th>Actions</th></tr>
 
+{% for d in dct %}
+<tr><td>{d.sid}</td><td>{{d.name}}</td><td>{{d.email}}</td><td>{{d.contact}}</td><td>{{d.status}}</td><td>&nbsp;<input type="button" value="Approve" style="background-color:green; color: aliceblue;">&nbsp; &nbsp;<input type="button" value="Reject" style="background-color: red; color:aliceblue">&nbsp;</td></tr>
+{% endfor %}
 
 
 

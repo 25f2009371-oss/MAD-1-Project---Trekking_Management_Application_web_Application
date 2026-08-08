@@ -41,23 +41,24 @@
 <br>
 <table border="1px solid black">
 <tr>
-<td>Booking_ID</td>
-<td>Name</td>
-<td>Booking_Date</td>
-<td>Status</td>
-<td>Actions</td>
+<th>Booking_ID</th>
+<th>Name</th>
+<th>Booking_Date</th>
+<th>Status</th>
+<th>Actions</th>
 </tr>
 
+{% for d in app_dict %}
 <tr>
-<td>XXX</td>
-<td>XXXX</td>
-<td>XXXX</td>
-<td>XXXX</td>
-<td>XXXXXX</td>
+<td>{{d}}</td>
+<td>{{d}}</td>
+<td>{{d}}</td>
+<td>{{d}}</td>
+<td><input type="button" value="Book Now" style="background-color: blue; color: white;"></td>
 </tr>
+{% endfor %}
 
 </table>
-
 
 </div>
 </div>
