@@ -13,17 +13,18 @@
 <div style="margin-top: 50px; text-align: center;">
 <h1>Login page</h1>
 
-<form action="POST">
-<table style="margin: 0 auto;">
-    <tr><td>Email</td><td><input type="text"></td></tr>
-    <tr><td>Password</td><td><input type="password"></td></tr>
-</table>
-<br>
-<input type="button" value="Submit" style="width: 250px; height: 60px; color: blue"><br>
-<br>
+<form action="/login" method="POST">
+    <table style="margin: 0 auto;">
+        <tr><td>Email</td><td><input type="email" name="emailid" required></td></tr>
+        <tr><td>Password</td><td><input type="password" name="pwd" required></td></tr>
+    </table>
+    
+    <br>
+    <input type="submit" value="Login" class="btn-action" style="width: 250px; height: 40px; background-color: blue; color:aliceblue">
+    <br><br>
 
-<a href="/register"><input type="button" value="Register" style="width: 250px; height: 40px;"></a>
-
+    <a href="/register"><input type="button" value="Register" style="width: 250px; height: 40px;"></a>
 </form>
+
 </div>
 {% endblock %}

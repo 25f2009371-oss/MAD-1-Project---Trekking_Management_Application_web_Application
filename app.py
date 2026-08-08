@@ -1,5 +1,6 @@
-from flask import Flask,render_template
-from models import db
+from flask import Flask,render_template,request,redirect,url_for
+from models import db,User
+
 
 
 app=None
@@ -16,14 +17,23 @@ setup_app()
 
 
 
-@app.route('/login/')
-@app.route('/logout')
-@app.route('/')
+@app.route('/login/', methods=["GET", "POST"])
+@app.route('/logout', methods=["GET", "POST"])
+@app.route('/', methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        uname = request.form.get("emailid")
+        pwd = request.form.get("pwd")        
+        user = db.session.query(User).filter(User.email == uname, User.password == pwd).first()
+        if user and str(user.role) == "0":
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for("register"))
+
     return render_template('login.html')
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET','POST'])
 def register():
     return render_template('register.html')
 
