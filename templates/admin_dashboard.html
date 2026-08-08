@@ -60,15 +60,14 @@
 <tr><th>Booking ID</th><th>User</th><td>Camp</th>
 <th>Booking Date</th><th>Status</th></tr>
 
-{% for d in app_data %}
-
-<tr><td>{{d.b_id}}</td><td>{{d.uname}}</td><td>{{d.camp}}</td>
-<td>{{d.b_date}}</td><td>{{d.status}}</td></tr>
+{% for r in r_data %}
+<tr><td>{{r.booking_id}}</td><td>{{r.full_name}}</td><td>{{r.trek_id}}</td>
+<td>{{r.booking_date}}</td><td>{{r.status}}</td></tr>
 {% endfor %}
+
+
 </table>
 
-
-<!--view allboking-->
 <br>
 <div style="text-align: right;"><a href="/Bookings">View all Bookings</a>
 {% endblock %}

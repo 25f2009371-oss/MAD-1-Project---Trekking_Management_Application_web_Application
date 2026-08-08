@@ -1,10 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Arohan - Trekkers{% endblock %}
+{% block title %}Arohan - Browse Treks{% endblock %}
 
-
-
-
-<div class="container">
 {% block sidebar %}
     <a href="/trekker_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" ></a><br>
     <a href="/all_treks"><input type="button" value="Browse Treks" style="width: 290px; height: 50px; margin: 0 auto;" disabled></a><br>
@@ -13,11 +9,7 @@
     <a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
 {% endblock %}
 
-
-
-
 {% block content %}
-
 <h1>Treks</h1>
 <input type="search" name="search" id="search" style="width: 800px; height: 30px;">
 <input type="button" value="search" style="height: 30px;">
@@ -25,16 +17,32 @@
 <br>
 
 <div style="align-items: center; justify-content: center;">
-<table border="1px solid black">
-
-
-<tr><th>ID</th><td>Trek Name</th><th>Location</th><th>Difficulty</th><th>Slots</th><th>Status</th></tr>
-{% for d in app_dict %}
-<tr><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td> </tr>
-{% endfor %}
-
-
-</table>
-
-
+    <table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+        <tr>
+            <th>ID</th>
+            <th>Trek Name</th>
+            <th>Location</th>
+            <th>Difficulty</th>
+            <th>Slots</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        
+        {% for t in trekdata %}
+        <tr>
+            <td>{{ t.trek_id }}</td>
+            <td>{{ t.trek_name }}</td>
+            <td>{{ t.location }}</td>
+            <td>{{ t.difficulty }}</td>
+            <td>{{ t.available_slots }}</td>
+            <td>{{ t.status }}</td>
+            <td>
+                <a href="/book_trek/{{ t.trek_id }}">
+                    <input type="button" value="Book" style="background-color: green; color: white;">
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

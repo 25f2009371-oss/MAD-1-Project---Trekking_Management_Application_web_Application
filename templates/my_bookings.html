@@ -1,45 +1,36 @@
 {% extends "base.html" %}
-{% block title %}Arohan - Trekkers{% endblock %}
-    
+{% block title %}Arohan - My Bookings{% endblock %}
+
 {% block sidebar %}
-    <a href="/trekker_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" ></a><br>
-    <a href="/all_treks"><input type="button" value="Browse Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-    <a href="/my_bookings"><input type="button" value="My bookings" style="width: 290px; height: 50px; margin: 0 auto;"disabled></a><br>
-    <a href="/profile_trekker"><input type="button" value="Profile" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-    <a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
+<a href="/trekker_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/all_treks"><input type="button" value="Browse Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/my_bookings"><input type="button" value="My bookings" style="width: 290px; height: 50px; margin: 0 auto;" disabled></a><br>
+<a href="/profile_trekker"><input type="button" value="Profile" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
 {% endblock %}
 
 {% block content %}
+<div style="text-align: center;">
+    <h2>My Confirmed Bookings</h2>
+    <br>
+    
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+<tr>
+    <th>Booking ID</th>
+    <th>Trek Name</th>
+    <th>Booking Date</th>
+    <th>Status</th>
+</tr>
+        
+    {% for b, t in bookings %}
+    <tr>
+    <td>{{ b.booking_id }}</td>
+    <td>{{ t.trek_name }}</td>
+    <td>{{ b.booking_date }}</td>
+    <td style="color: green; font-weight: bold;">{{ b.status }}</td>
+    </tr>
+    {% endfor %}
+    </table>
 
-
-<h1>Bookings</h1>
-<br>
-<br>
-<div style="margin: 0 auto;">
-&nbsp;&nbsp;&nbsp;<input type="search" name="search" id="search" style="width: 800px; height: 30px;">
-<input type="button" value="search" style="height: 30px;">
 </div>
-<br>
-<br>
-<table border="1px solid black">
-<tr>
-<th>Booking_ID</th>
-<th>Name</th>
-<th>Booking_Date</th>
-<th>Status</th>
-<th>Actions</th>
-</tr>
-
-{% for d in app_dict %}
-<tr>
-<td>{{d}}</td>
-<td>{{d}}</td>
-<td>{{d}}</td>
-<td>{{d}}</td>
-<td><input type="button" value="Book Now" style="background-color: blue; color: white;"></td>
-</tr>
-{% endfor %}
-
-</table>
-
 {% endblock %}

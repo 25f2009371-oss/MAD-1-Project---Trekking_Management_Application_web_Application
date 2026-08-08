@@ -28,20 +28,33 @@
 <th>User_ID</th>
 <th>Name</th>
 <th>Email</th>
-<th>Contact</th>
+<th>Phone No</th>
 <th>Status</th>
 <th>Actions</th>
 </tr>
-{% for d in mng_usr %}
+
+
+{% for t in trkkdata %}
 <tr>
-<td>{{d.uid}}</td>
-<td>{{d.name}}</td>
-<td>{{d.email}}</td>
-<td>{{d.phone}}</td>
-<td>{{d.status}}</td>
-<td><a href="add_edit_trek.html">&nbsp; <input type="button" value="edit" style="background-color: brown; color:aliceblue">&nbsp;</a><input type="button" value="delete" style="color:white; background-color: navy;">&nbsp;</td>
+<td>{{t.user_id}}</td>
+<td>{{t.full_name}}</td>
+<td>{{t.email}}</td>
+<td>{{t.phone}}</td>
+<td>{{t.status}}</td>
+<td>
+    {% if t.status == 'Active' %}
+        <a href="/update_status/{{ t.user_id }}/Deactivated">
+            <input type="button" value="Deactivate" style="color:white; background-color: navy;">
+        </a>
+    {% else %}
+        <a href="/update_status/{{ t.user_id }}/Active">
+            <input type="button" value="Activate" style="background-color: green; color: white;">
+        </a>
+    {% endif %}
+</td>
 </tr>
 {% endfor %}
+
 </table>
 
 
