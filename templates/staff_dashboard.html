@@ -1,77 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Dashboard</title>
-    <link rel="stylesheet" href="/static/main.css">
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Arohan - Staff{% endblock %}
 
-<div class="container">
+{% block sidebar %}
+<a href="/staff_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" disabled></a><br>
+<a href="/staff_trek_manage"><input type="button" value="My Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/participants"><input type="button" value="Participants" style="width: 290px; height: 50px; margin: 0 auto;" ></a><br>
+<a href="/profile_staff"><input type="button" value="Profile" style="width: 290px; height: 50px; margin: 0 auto;" ></a><br>
+<a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
+{% endblock %}
 
-
-<div>
-<input type="button" value="Staff Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" disabled><br>
-<a href="staff_trek_manage.html"><input type="button" value="My Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-<a href="participants.html"><input type="button" value="Participants" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-<a href="profile_staff.html"><input type="button" value="Profile" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-<a href="login.html"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
-</div>
-
-
-
-
-
-
-<div class="innr-container">
-<div class="admn-head" style="text-align: center;"><h2>My Dashboard</h2>
+{% block content %}
+<h2>My Dashboard</h2>
 <br>
 
-<div style="text-align: left;"><h3>Staff Dashboard</h3></div>
+<h3>Staff Dashboard</h3>
+    
 <div class="sml-container">
 <h4>Assigned treks: </h4>
 &nbsp; <p>42</p>
 </div>
 
-
 <div class="sml-container">
 <h4>Total Participants: </h4>
 &nbsp; <p>120</p>
-
-
 </div>
 
 <div class="sml-container">
 <h4>Open treks: </h4>
 &nbsp; <p>18</p>
-
-
 </div>
-
-
-
-
-
-
-<br>
-
-<div class="adm-dash" style="text-align: left;"><h4>Assigned Treks</h4></div>
+<br><br>
+<div class="adm-dash" style="text-align: left;">
+<h4>Assigned Treks</h4>
+</div>
+    
 <table border="1px solid black;">
-
-<tr><th>Track Name</th><th>Location</th><th>Participants</th>
-<th>Slots</th><th>Status</th><th>Action</th></tr>
+<tr>
+<th>Trek Name</th>
+<th>Location</th>
+<th>Participants</th>
+<th>Slots</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
 
 {% for d in app_dict %}
-<tr><td>{{d}}</td><td>{{d}}</td><td>{{d}}</td>
-<td>{{d}}</td><td>{{d}}</td><td><a href="staff_trek_manage.html"><input type="button" value="Manage" style="background-color: blueviolet; color: aliceblue;"></a></td></tr>
+<tr>
+<td>{{d.name}}</td>
+<td>{{d.location}}</td>
+<td>{{d.participants}}</td>
+<td>{{d.slots}}</td>
+<td>{{d.status}}</td>
+<td>
+<a href="/staff_trek_manage">
+<input type="button" value="Manage" style="background-color: blueviolet; color: aliceblue;">
+</a>
+</td>
+</tr>
 {% endfor %}
 </table>
-<br>
-<div style="text-align: right;"><a href="my_bookings.html">View All My Treks</a>
+    <br>
+    
+<div style="text-align: right;">
+<a href="/staff_trek_manage">View All My Treks</a>
 </div>
-</div>
-</div>    
-
-</body>
-</html>
+{% endblock %}

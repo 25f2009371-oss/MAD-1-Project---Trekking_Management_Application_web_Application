@@ -14,53 +14,88 @@ def setup_app():
 setup_app()
 
 
-app_dict = [
-    {
-        "t_treks": 10,
-        "t_users": 100,
-        "t_staffs": 12,
-        "t_booking": 8   # singular key to match template
-    }
-]
-app_data = [
-    {"b_id": "B001", "uname": "Amit Sharma", "camp": "Everest base camp", "b_date": "12 August 2026", "status": "Booked"},
-    {"b_id": "B002", "uname": "Amia", "camp": "East base camp", "b_date": "14 August 2026", "status": "Booked"},
-    {"b_id": "B003", "uname": "Narma Ga", "camp": "Kedarnath trek", "b_date": "1 July 2026", "status": "Cancelled"}
-]
-trekdata = [
-    {"id": 1, "trekname": "Everest Base Camp", "location": "Nepal", "difficulty": "Hard", "slots": 20, "status": "Open"},
-    {"id": 2, "trekname": "Kedarnath Trek", "location": "India", "difficulty": "Medium", "slots": 15, "status": "Open"},
-    {"id": 3, "trekname": "Valley of Flowers", "location": "India", "difficulty": "Easy", "slots": 30, "status": "Closed"},
-]
-
-dct=[
-
-        {"sid": 1, "name": "Amit Sharma", "email": "amit@example.com", "contact": "9876543210", "status": "Pending"},
-    {"sid": 2, "name": "Priya Verma", "email": "priya@example.com", "contact": "9123456780", "status": "Approved"},
-    {"sid": 3, "name": "Rahul Singh", "email": "rahul@example.com", "contact": "9988776655", "status": "Rejected"},
-]
-
-@app.route("/admin_dashboard.html")
-def admin_dashboard():
-    return render_template("admin_dashboard.html", app_dict=app_dict,app_data=app_data)
-
-@app.route("/manage_treks.html")
-def managetrek():
-    return render_template("manage_treks.html",trekdata=trekdata)
 
 
-@app.route("/all_staff.html")
-def staff():
-    return render_template("all_staff.html",dct=dct)
+@app.route('/login/')
+@app.route('/logout')
+@app.route('/')
+def login():
+    return render_template('login.html')
 
-@app.route("/all_users.html")
-def user_mng():
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+
+@app.route('/admin_dashboard')
+def admin():
+    return render_template("admin_dashboard.html")
+
+
+
+@app.route('/manage_treks')
+def manageadmin():
+    return render_template("manage_treks.html")
+
+@app.route('/all_staffs')
+def admin_staff():
+    return render_template("all_staff.html")
+
+
+
+@app.route('/all_users')
+def admin_user():
     return render_template("all_users.html")
 
-
-@app.route("/Bookings.html")
-def bkng_admin():
+@app.route('/bookings')
+def admin_bookings():
     return render_template("Bookings.html")
+
+
+
+@app.route('/staff_dashboard')
+def staff():
+    return render_template("staff_dashboard.html")
+
+
+
+@app.route('/staff_trek_manage')
+def staff_trek_manage():
+    return render_template("staff_trek_manage.html")
+
+
+@app.route('/participants')
+def staff_participants():
+    return render_template("participants.html")
+
+@app.route('/profile_staff')
+def staff_profile():
+    return render_template("profile_staff.html")
+
+
+
+@app.route('/trekker_dashboard')
+def trekker():
+    return render_template("trekker_dashboard.html")
+
+
+@app.route('/all_treks')
+def trekker_treks():
+    return render_template("all_treks.html")
+
+
+
+@app.route('/my_bookings')
+def trekker_bookings():
+    return render_template("my_bookings.html")
+
+
+
+@app.route('/profile_trekker')
+def profile_trekker():
+    return render_template("profile_trekker.html")
+
 
 
 

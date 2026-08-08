@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arohan - Admin</title>
-    <link rel="stylesheet" href="/static/main.css">
-</head>
-<body>
-<div class="container"   style=" width:1300px;
-    height:800px;
-    border:1px solid black;
-    margin:auto; ">
-<div>
+{% extends "base.html" %}
+{% block title %}Arohan - Admin{% endblock %}
+
+
+
+
+{% block sidebar %}
+
 <input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" disabled><br>
-<a href="manage_treks.html"><input type="button" value="Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-<a href="all_staff.html"><input type="button" value="Staff" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-<a href="all_users.html"><input type="button" value="Users" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-<a href="Bookings.html"><input type="button" value="Bookings" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-<a href="login.html"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
-</div>
+<a href="/manage_treks"><input type="button" value="Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/all_staffs"><input type="button" value="Staff" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/all_users"><input type="button" value="Users" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/bookings"><input type="button" value="Bookings" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
+{% endblock %}
 
 
-
-<div class="innr-container" style="    width:1000px;
-    height:700px;
-    border:1px solid blue;">
-<div class="admn-head" style="text-align: center;"><h2>Admin Dashboard</h2>
+{% block content %}
+<h2>Admin Dashboard</h2>
 <br>
 
 {% for d in app_dict %}
@@ -80,9 +71,4 @@
 <!--view allboking-->
 <br>
 <div style="text-align: right;"><a href="Bookings.html">View all Bookings</a>
-</div>
-</div>
-</div>    
-
-</body>
-</html>
+{% endblock %}

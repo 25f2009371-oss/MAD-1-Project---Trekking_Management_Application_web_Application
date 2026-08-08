@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arohan - Register Page</title>
-    <link rel="stylesheet" href="/static/main.css">
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Arohan - Register Page{% endblock %}
 
-<div class="container">
-<div class="innr-container">
-<div class="rgstr-box"><h1>Register</h1>
 
-<table>
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div style="text-align: center; margin-top: 50px;">
+<h1>Register</h1>
+
+<form method="post">
+<table style="margin: 0 auto;">
+
+
     <tr><td>Full Name: </td><td><input type="text"></td></tr>
     <tr><td>Email: </td><td><input type="text"></td></tr>
     <tr><td>Password: </td><td><input type="password"></td></tr>
@@ -22,22 +26,17 @@
 <option value="None">None</option>
 <option value="Trekker">Trekker</option>
 <option value="Trekker Staff">Trekker Staff</option>
+</select>
 </td></tr>
 </table>
 
 <br>
-<input type="button" value="Register" style="width: 250px; height: 40px;"></td>
-        <!--<td><a href="login.html">Already Registered?</a></td>--></tr>
+<input type="button" value="Submit" style="width: 250px; height: 60px; color: blue">
 <br>
 <br>
 
-<a href="login.html"><input type="button" value="Already Registered? Login" style="width: 250px; height: 40px;"></a>
-
-
-</div>
-</div>
+<a href="/login"><input type="button" value="Already Registered? Login" style="width: 250px; height: 40px;"></a>
+</form>
 </div>
 
-
-</body>
-</html>
+{% endblock %}

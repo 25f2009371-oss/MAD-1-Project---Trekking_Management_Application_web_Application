@@ -1,35 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arohan - Login Page</title>
-    <link rel="stylesheet" href="/static/main.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-<div class="container">
-<div class="innr-container">
-<div class="login-box"><h1>Login</h1>
 
-<table>
+{% block title %}Arohan - Login Page{% endblock %}
+
+
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 50px; text-align: center;">
+<h1>Login page</h1>
+
+<form action="POST">
+<table style="margin: 0 auto;">
     <tr><td>Email</td><td><input type="text"></td></tr>
     <tr><td>Password</td><td><input type="password"></td></tr>
 </table>
 <br>
-<input type="button" value="Login" style="width: 250px; height: 40px;"></td>
-        <!--<td><a href="login.html">Already Registered?</a></td>--></tr>
-<br>
+<input type="button" value="Submit" style="width: 250px; height: 60px; color: blue"><br>
 <br>
 
-<a href="register.html"><input type="button" value="Register" style="width: 250px; height: 40px;"></a>
+<a href="/register"><input type="button" value="Register" style="width: 250px; height: 40px;"></a>
 
-
-
+</form>
 </div>
-</div>
-</div>
-
-
-</body>
-</html>
+{% endblock %}

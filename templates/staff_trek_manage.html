@@ -1,191 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Arohan - Staff{% endblock %}
 
-    <title>Staff - Manage Trek</title>
+{% block sidebar %}
+<a href="/staff_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/staff_trek_manage"><input type="button" value="My Treks" style="width: 290px; height: 50px; margin: 0 auto;"disabled></a><br>
+<a href="/participants"><input type="button" value="Participants" style="width: 290px; height: 50px; margin: 0 auto;" ></a><br>
+<a href="/profile_staff"><input type="button" value="Profile" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+<a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
+{% endblock %}
 
-    <link rel="stylesheet" href="/static/main.css">
-</head>
+{% block content %}
+<div class="admn-head" style="text-align: center;">
 
-<body>
+<h2> trek.trek_name </h2>
 
-<div class="container">
+<a href="/staff_dashboard">
+&lt;- Back to Staff Dashboard
+</a>
 
-    <!-- Staff Navigation -->
-    <div>
+<br>
+<br>
 
-        <a href="staff_dashboard.html">
-            <input type="button"
-                   value="Staff Dashboard"
-                   style="width: 290px; height: 50px; margin: 0 auto;">
-        </a>
-        <br>
-
-        <a href="staff_trek_manage.html">
-            <input type="button"
-                   value="My Treks"
-                   style="width: 290px; height: 50px; margin: 0 auto;"
-                   disabled>
-        </a>
-        <br>
-
-        <a href="participants.html">
-            <input type="button"
-                   value="Participants"
-                   style="width: 290px; height: 50px; margin: 0 auto;">
-        </a>
-        <br>
-
-        <a href="profile_staff.html">
-            <input type="button"
-                   value="Profile"
-                   style="width: 290px; height: 50px; margin: 0 auto;">
-        </a>
-        <br>
-
-        <a href="login.html">
-            <input type="button"
-                   value="Logout"
-                   style="width: 290px; height: 50px; margin: 0 auto;">
-        </a>
-
-    </div>
-
-
-    <!-- Main Content -->
-    <div class="innr-container">
-
-        <div class="admn-head" style="text-align: center;">
-
-            <h2>Everest Base Camp</h2>
-
-            <a href="staff_dashboard.html">
-                &lt;- Back to Staff Dashboard
-            </a>
-
-            <br>
-            <br>
-
-
-            <!-- Trek Information -->
-            <div style="text-align: left;">
-                <h3>Trek Information</h3>
-            </div>
-
-
-            <div class="sml-container">
-                <h4>Location:</h4>
-                <p>Nepal</p>
-            </div>
-
-
-            <div class="sml-container">
-                <h4>Duration:</h4>
-                <p>12 days</p>
-            </div>
-
-
-            <div class="sml-container">
-                <h4>Start Date:</h4>
-                <p>20-May-2026</p>
-            </div>
-
-
-            <div class="sml-container">
-                <h4>End Date:</h4>
-                <p>01-June-2026</p>
-            </div>
-
-
-            <div class="sml-container">
-                <h4>Total Slots:</h4>
-                <p>20</p>
-            </div>
-
-
-            <div class="sml-container">
-                <h4>Available Slots:</h4>
-                <p>12</p>
-            </div>
-
-
-            <div class="sml-container">
-                <h4>Status:</h4>
-                <p>Open</p>
-            </div>
-
-
-            <br>
-
-
-            <!-- Participants -->
-            <div class="adm-dash" style="text-align: left;">
-                <h4>Participants</h4>
-            </div>
-
-
-            <table border="1">
-
-                <tr>
-                    <th>User Name</th>
-                    <th>Email</th>
-                    <th>Booking Date</th>
-                    <th>Status</th>
-                </tr>
-
-
-                <tr>
-                    <td>XXXXXX</td>
-                    <td>XXXXXX</td>
-                    <td>XXXXX</td>
-                    <td>Confirmed</td>
-                </tr>
-
-
-                <tr>
-                    <td>XXXXXX</td>
-                    <td>XXXXXX</td>
-                    <td>XXXXX</td>
-                    <td>Confirmed</td>
-                </tr>
-
-
-                <tr>
-                    <td>XXXXXX</td>
-                    <td>XXXXXX</td>
-                    <td>XXXXX</td>
-                    <td>Confirmed</td>
-                </tr>
-
-            </table>
-
-
-            <br>
-            <br>
-
-
-            <!-- Trek Status Actions -->
-
-            <input type="button"
-                   value="Mark as Started"
-                   style="width: 200px; color: blue;">
-
-            &nbsp;
-
-            <input type="button"
-                   value="Mark as Completed"
-                   style="width: 200px; color: blue;">
-
-
-        </div>
-
-    </div>
-
+<div style="text-align: left;">
+<h3>Trek Information</h3>
 </div>
 
-</body>
+<div class="sml-container">
+<h4>Location:</h4>
+<p>trek.location</p>
+</div>
 
-</html>
+<div class="sml-container">
+<h4>Duration:</h4>
+<p> trek.duration  days</p>
+</div>
+
+<div class="sml-container">
+<h4>Start Date:</h4>
+<p>trek.start_date</p>
+</div>
+
+<div class="sml-container">
+<h4>End Date:</h4>
+<p>trek.end_date</p>
+</div>
+
+<div class="sml-container">
+<h4>Total Slots:</h4>
+<p>trek.total_slots</p>
+</div>
+
+<div class="sml-container">
+<h4>Available Slots:</h4>
+<p>trek.available_slots</p>
+</div>
+
+<div class="sml-container">
+<h4>Status:</h4>
+<p>trek.status</p>
+</div>
+
+<br>
+
+<div class="adm-dash" style="text-align: left;">
+<h4>Participants</h4>
+</div>
+
+<table border="1">
+
+<tr>
+<th>User Name</th>
+<th>Email</th>
+<th>Booking Date</th>
+<th>Status</th>
+</tr>
+
+{% for participant in participants %}
+<tr>
+<td>{{ participant.name }}</td>
+<td>{{ participant.email }}</td>
+<td>{{ participant.booking_date }}</td>
+<td>{{ participant.status }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+<br>
+
+<input type="button" value="Mark as Started" style="width: 200px; color: blue;">
+
+&nbsp;
+
+<input type="button" value="Mark as Completed" style="width: 200px; color: blue;">
+<br>
+<br>
+<br>
+</div>
+{% endblock %}

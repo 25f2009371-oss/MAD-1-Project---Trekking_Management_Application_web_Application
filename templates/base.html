@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Arohan Trekking{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+<div class="cntr" style="border: 1px solid black; height: 800px; width: 1400px; margin:0 auto; display:flex; justify-content:center; align-items:center;">
+
+    <div>
+        {% block sidebar %}
+        {% endblock %}
+    </div>
+
+    <div class="incntr" style="border: 1px solid blue; height: 600px; width: 1000px; margin:0 auto; align-items: center; overflow-y: auto;">
+        
+        <br><br>
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</div>
+    
+</body>
+</html>

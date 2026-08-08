@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trek Details</title>
-    <link rel="stylesheet" href="/static/main.css">
-</head>
-<body>
-<div style="border: 1px solid black; height: 1000px; width: 800px; margin: 0 auto;">
+{% extends "base.html" %}
+{% block title %}Arohan - trek details{% endblock %}
+{% block sidebar %}
+{% endblock %}
 
-<div style="border:1px solid blue;
-            height:800px;
-            width:600px;
-            margin:0 auto;
-            display:flex;
-            flex-direction:column;
-            align-items:center;">
 
-<div>
-    <h1>Everest Base Camp</h1>
+{% block content %}
+
+<h1>Everest Base Camp</h1>
 <a href="trekker_dashboard.html">&nbsp;&nbsp;&lt;- Back to Treks</a>
 <br>
 <br>    
@@ -43,10 +31,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="my_bookings.html"><input type="button" value="Book now" style="width: 80px; height: 50px; color: blue;"></a>
+<a href="/my_bookings"><input type="button" value="Book now" style="width: 80px; height: 50px; color: blue;"></a>
 <br>
 <br>
-</div>
-</div>
-</body>
-</html>
+{% endblock %}
