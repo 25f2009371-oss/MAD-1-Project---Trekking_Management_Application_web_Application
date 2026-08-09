@@ -222,7 +222,10 @@ def staff_trek_manage():
         t_id = request.form.get("trek_id")
         new_slots = request.form.get("available_slots")
         new_status = request.form.get("status")
-        trek_to_update = db.session.query(Trek).filter(Trek.trek_id == t_id).first()
+        trek_to_update = db.session.query(Trek).filter(
+            Trek.trek_id == t_id,
+            Trek.assigned_staff_id == current_staff_id
+            ).first()        
         if trek_to_update:
             trek_to_update.available_slots = int(new_slots)
             trek_to_update.status = new_status
