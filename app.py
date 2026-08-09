@@ -11,8 +11,7 @@ def get_admin_dashboard_stats():
     total_users = db.session.query(User).filter(User.role == "2").count() 
     t_staff = db.session.query(User).filter(User.role == "1", User.status == "Active").count()    
     total_bookings = db.session.query(Booking).count()
-    stats = [{
-        "t_treks": total_treks,
+    stats = [{"t_treks": total_treks,
         "t_users": total_users,
         "t_staffs": t_staff,
         "t_booking": total_bookings}]
@@ -42,19 +41,20 @@ def setup_app():
     app = Flask(__name__)
     app.secret_key = "Arohan"  
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///databse.sqlite3"
+    app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {"connect_args": {"timeout": 15}}
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
     
     with app.app_context():
         db.create_all()  
         
-    print("Database setup done ...... ")
+    print("Database setup done successfully ")
     app.app_context().push()
 setup_app()
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("main.html")
 
 @app.route('/logout')
 @app.route('/login/', methods=["GET", "POST"])
@@ -302,13 +302,11 @@ def trekker():
 def trekker_treks():
     if request.method == 'POST':
         search_query = request.form.get("search")
-        data = db.session.query(Trek).filter(
-            (Trek.trek_name.like(f"%{search_query}%")) | 
+        data = db.session.query(Trek).filter((Trek.trek_name.like(f"%{search_query}%")) | 
             (Trek.location.like(f"%{search_query}%"))
         ).all()
     else:
         data = get_trek_data() 
-        
     return render_template("all_treks.html", trekdata=data)
 
 @app.route('/my_bookings')
