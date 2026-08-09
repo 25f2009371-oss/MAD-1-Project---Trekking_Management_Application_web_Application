@@ -52,10 +52,13 @@ def setup_app():
     app.app_context().push()
 setup_app()
 
+@app.route('/')
+def index():
+    return render_template("index.html")
+
 
 @app.route('/login/', methods=["GET", "POST"])
 @app.route('/logout', methods=["GET", "POST"])
-@app.route('/', methods=["GET", "POST"])
 def login():
     if request.path == '/logout':
         session.clear()
