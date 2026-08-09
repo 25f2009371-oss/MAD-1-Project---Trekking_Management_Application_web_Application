@@ -17,8 +17,17 @@
 <br>
 <br>
 <div style="margin: 0 auto;">
-&nbsp;&nbsp;&nbsp;<input type="search" name="search" id="search" style="width: 800px; height: 30px;">
-<input type="button" value="search" style="height: 30px;">
+<!-- 1. Wrap the search inputs in a POST form -->
+<form method="POST" action="">
+    <!-- The name="search" is mandatory for Python to catch it -->
+    <input type="search" name="search" style="width: 500px; height: 30px;">
+    
+    <!-- This MUST be type="submit" -->
+    <input type="submit" value="search" style="height: 30px; cursor: pointer;">
+</form>
+
+<br>
+<br>
 </div>
 <br>
 <br>
@@ -42,15 +51,8 @@
 <td>{{t.phone}}</td>
 <td>{{t.status}}</td>
 <td>
-    {% if t.status == 'Active' %}
-        <a href="/update_status/{{ t.user_id }}/Deactivated">
-            <input type="button" value="Deactivate" style="color:white; background-color: navy;">
+<a href="#"><input type="button" value="Blacklisted" style="background-color: red; color: white; cursor: pointer; padding: 5px 10px;">
         </a>
-    {% else %}
-        <a href="/update_status/{{ t.user_id }}/Active">
-            <input type="button" value="Activate" style="background-color: green; color: white;">
-        </a>
-    {% endif %}
 </td>
 </tr>
 {% endfor %}

@@ -1,67 +1,39 @@
 {% extends "base.html" %}
-{% block title %}Arohan - Staff{% endblock %}
+{% block title %}Arohan - Staff Dashboard{% endblock %}
 
 {% block sidebar %}
-<a href="/staff_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" disabled></a><br>
-<a href="/staff_trek_manage"><input type="button" value="My Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
-<a href="/participants"><input type="button" value="Participants" style="width: 290px; height: 50px; margin: 0 auto;" ></a><br>
-<a href="/profile_staff"><input type="button" value="Profile" style="width: 290px; height: 50px; margin: 0 auto;" ></a><br>
-<a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
+    <a href="/staff_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;" disabled></a><br>
+    <a href="/staff_trek_manage"><input type="button" value="Manage Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+    <a href="/participants"><input type="button" value="Participants" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+    <a href="/profile_staff"><input type="button" value="Profile" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
+    <a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
 {% endblock %}
 
 {% block content %}
-<h2>My Dashboard</h2>
-<br>
-
-<h3>Staff Dashboard</h3>
-    
-<div class="sml-container">
-<h4>Assigned treks: </h4>
-&nbsp; <p>42</p>
-</div>
-
-<div class="sml-container">
-<h4>Total Participants: </h4>
-&nbsp; <p>120</p>
-</div>
-
-<div class="sml-container">
-<h4>Open treks: </h4>
-&nbsp; <p>18</p>
-</div>
-<br><br>
-<div class="adm-dash" style="text-align: left;">
-<h4>Assigned Treks</h4>
-</div>
-    
-<table border="1px solid black;">
-<tr>
-<th>Trek Name</th>
-<th>Location</th>
-<th>Participants</th>
-<th>Slots</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-
-{% for d in app_dict %}
-<tr>
-<td>{{d.name}}</td>
-<td>{{d.location}}</td>
-<td>{{d.participants}}</td>
-<td>{{d.slots}}</td>
-<td>{{d.status}}</td>
-<td>
-<a href="/staff_trek_manage">
-<input type="button" value="Manage" style="background-color: blueviolet; color: aliceblue;">
-</a>
-</td>
-</tr>
-{% endfor %}
-</table>
+    <div class="admn-head" style="text-align: center;">        
+        <h2>Staff Dashboard - My Assigned Treks</h2>
+    </div>
     <br>
-    
-<div style="text-align: right;">
-<a href="/staff_trek_manage">View All My Treks</a>
-</div>
+
+    <table border="1px solid black" >
+        <tr>
+            <th>Trek ID</th>
+            <th>Trek Name</th>
+            <th>Location</th>
+            <th>Dates</th>
+            <th>Slots Available</th>
+            <th>Status</th>
+        </tr>
+
+        {% for t in treks %}
+        <tr>
+            <td>{{ t.trek_id }}</td>
+            <td>{{ t.trek_name }}</td>
+            <td>{{ t.location }}</td>
+            <td>{{ t.start_date }} to {{ t.end_date }}</td>
+            <td>{{ t.available_slots }} / {{ t.total_slots }}</td>
+            <td style="color: blue; font-weight: bold;">{{ t.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

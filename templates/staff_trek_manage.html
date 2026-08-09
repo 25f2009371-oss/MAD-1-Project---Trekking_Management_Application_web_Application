@@ -11,92 +11,73 @@
 {% endblock %}
 
 {% block content %}
-<div class="admn-head" style="text-align: center;">
+<div class="usr-dash">
+    {% for trek in treks %}
+    <div style="border: 1px solid blue; padding: 20px; margin-bottom: 30px;">
+        <h2 style="text-align: center;">{{ trek.trek_name }}</h2>
+        <div style="text-align: center;">
+            <a href="/staff_dashboard"><-- Back to Staff Dashboard</a>
+        </div>
+        
+        <h3>Trek Information</h3>
+        
+        <form action="/staff_trek_manage" method="POST">
+            <input type="hidden" name="trek_id" value="{{ trek.trek_id }}">
+            
+    <table border="1px solid black" >
+                <tr><td><b>Location:</b></td><td>{{ trek.location }}</td></tr>
+                <tr><td><b>Duration:</b></td><td>{{ trek.duration }} days</td></tr>
+                <tr><td><b>Start Date:</b></td><td>{{ trek.start_date }}</td></tr>
+                <tr><td><b>End Date:</b></td><td>{{ trek.end_date }}</td></tr>
+                <tr><td><b>Total Slots:</b></td><td>{{ trek.total_slots }}</td></tr>
+                
+                <tr>
+                    <td><b>Available Slots:</b></td>
+                    <td>
+                        <input type="number" name="available_slots" value="{{ trek.available_slots }}" min="0" max="{{ trek.total_slots }}">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><b>Status:</b></td>
+                    <td>
+                        <select name="status">
+                            <option value="Open" {% if trek.status == 'Open' %}selected{% endif %}>Open</option>
+                            <option value="Closed" {% if trek.status == 'Closed' %}selected{% endif %}>Closed</option>
+                            <option value="Completed" {% if trek.status == 'Completed' %}selected{% endif %}>Completed</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="Update Trek Details" style="background-color: green; color: white; padding: 5px 10px; cursor: pointer;">
+        </form>
 
-<h2> trek.trek_name </h2>
-
-<a href="/staff_dashboard">
-<-- Back to Staff Dashboard
-</a>
-
-<br>
-<br>
-
-<div style="text-align: left;">
-<h3>Trek Information</h3>
-</div>
-
-<div class="sml-container">
-<h4>Location:</h4>
-<p>trek.location</p>
-</div>
-
-<div class="sml-container">
-<h4>Duration:</h4>
-<p> trek.duration  days</p>
-</div>
-
-<div class="sml-container">
-<h4>Start Date:</h4>
-<p>trek.start_date</p>
-</div>
-
-<div class="sml-container">
-<h4>End Date:</h4>
-<p>trek.end_date</p>
-</div>
-
-<div class="sml-container">
-<h4>Total Slots:</h4>
-<p>trek.total_slots</p>
-</div>
-
-<div class="sml-container">
-<h4>Available Slots:</h4>
-<p>trek.available_slots</p>
-</div>
-
-<div class="sml-container">
-<h4>Status:</h4>
-<p>trek.status</p>
-</div>
-
-<br>
-
-<div class="adm-dash" style="text-align: left;">
-<h4>Participants</h4>
-</div>
-
-<table border="1">
-
-<tr>
-<th>User Name</th>
-<th>Email</th>
-<th>Booking Date</th>
-<th>Status</th>
-</tr>
-
-{% for participant in participants %}
-<tr>
-<td>{{ participant.name }}</td>
-<td>{{ participant.email }}</td>
-<td>{{ participant.booking_date }}</td>
-<td>{{ participant.status }}</td>
-</tr>
-{% endfor %}
-
-</table>
-
-<br>
-<br>
-
-<input type="button" value="Mark as Started" style="width: 200px; color: blue;">
-
-&nbsp;
-
-<input type="button" value="Mark as Completed" style="width: 200px; color: blue;">
-<br>
-<br>
-<br>
+        <br>
+        <h3>Participants</h3>
+    <table border="1px solid black" >
+            <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Booking Date</th>
+                <th>Status</th>
+            </tr>
+            {% for b, u in participants %}
+                {% if b.trek_id == trek.trek_id %}
+                <tr>
+                    <td>{{ u.full_name }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ b.booking_date }}</td>
+                    <td style="color: green;">{{ b.status }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+    
+    {% if not treks %}
+        <h3 style="color: red; text-align: center;">You have no assigned treks to manage.</h3>
+    {% endif %}
 </div>
 {% endblock %}

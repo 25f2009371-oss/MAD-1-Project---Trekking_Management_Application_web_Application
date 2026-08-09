@@ -11,14 +11,21 @@
     <a href="/logout"><input type="button" value="Logout" style="width: 290px; height: 50px; margin: 0 auto;"></a>
 {% endblock %}
 
+
 {% block content %}
-
-
-<p><b>Name:</b>% d %</p>
-<p><b>Email:</b>% d %</p>
-<p><b>Contact:</b>% d %</p>
-<p><b>Status:</b>% d %</p>
-&nbsp;
+<h2>My Profile</h2>
+    <br><br>
+    <h3><b>Name:</b> {{ d.full_name }}</h3>
+    <br>
+    <h3><b>Email:</b> {{ d.email }}</h3>
+    <br>
+    <h3><b>Contact:</b> {{ d.phone }}</h3>
+    <br>
+    <h3 style="color: green;"><b>Status:</b> {{ d.status }}</h3>
+    
+    <br><br>
+    <a href="/edit_profile">
+    </a>
 
 
 

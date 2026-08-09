@@ -4,9 +4,6 @@
 
 {% block sidebar %}
 
-
-
-
 <a href="/admin_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
 <a href="/manage_treks"><input type="button" value="Treks" style="width: 290px; height: 50px; margin: 0 auto;" ></a><br>
 <a href="/all_staffs"><input type="button" value="Staff" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
@@ -21,36 +18,36 @@
 <br>
     <br>
 
-<h1>Bookings</h1>
-<br>
-<br>
 <div style="margin: 0 auto;">
-&nbsp;&nbsp;&nbsp;<input type="search" name="search" id="search" style="width: 800px; height: 30px;">
-<input type="button" value="search" style="height: 30px;">
-</div>
+    <h1>All Bookings</h1>
+    <br>
+
+<form method="POST" action="">
+    <input type="search" name="search" style="width: 500px; height: 30px;" placeholder="Search...">
+    <input type="submit" value="Search" style="height: 30px; cursor: pointer;">
+</form></div>
 <br>
 <br>
-<table border="1px solid black">
-<tr>
-<th>Booking_ID</th>
-<th>Name</th>
-<th>Booking_Date</th>
-<th>Status</th>
-<th>Actions</th>
-</tr>
 
+    <table border="1px solid black" >
+    <tr>
+        <th>Booking_ID</th>
+        <th >User Name</th>
+        <th>Trek Name</th>
+        <th>Booking_Date</th>
+        <th>Status</th>
+    </tr>
 
-{% for d in bkng %}
-<tr>
-<td>{{d}}</td>
-<td>{{d}}</td>
-<td>{{d}}</td>
-<td>{{d}}</td>
-<td><a href="add_edit_trek.html">&nbsp;&nbsp; <input type="button" value="edit" style="background-color: brown; color:aliceblue">&nbsp;&nbsp;</a><input type="button" value="delete" style="color:white; background-color: navy;">&nbsp;</td>
-</tr>
-{% endfor %}
+    {% for b, u, t in bkng %}
+    <tr>
+        <td>{{ b.booking_id }}</td>
+        <td>{{ u.full_name }}</td>
+        <td>{{ t.trek_name }}</td>
+        <td>{{ b.booking_date }}</td>
+        <td>{{ b.status }}</td>
+    </tr>
+    {% endfor %}
 
 </table>
-
 
 {% endblock %}

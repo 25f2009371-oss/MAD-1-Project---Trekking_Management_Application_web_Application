@@ -11,24 +11,38 @@
 <div style="text-align: center;">
 <h1>Everest base camp</h1>
 </div>
-<h4>participants</h4>
 <div>
-<table border="1px solid black">
-<tr><th>Name</th>
-<th>Email</th>
-<th>Contact</th>
-<th>Booking Date</th>
-<th>Status</th>
-</tr>
-{% for d in app_dict %}
-<tr>
-<td>{{d.name}}</td>
-<td>{{d.email}}</td>
-<td>{{d.contact}}</td>
-<td>{{d.booking_date}}</td>
-<td>{{d.status}}</td>
-</tr>
-{% endfor %}
-</table>
-</div>
+<div class="usr-dash" style="text-align: center;">
+    {% for trek in treks %}
+        <br><br>
+        <h2>{{ trek.trek_name }}</h2>
+        <h4 style="text-align: left;">participants</h4>
+        
+        <table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Booking Date</th>
+                <th>Status</th>
+            </tr>
+
+            {% for b, u in participants %}
+                {% if b.trek_id == trek.trek_id %}
+                <tr>
+                    <td>{{ u.full_name }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.phone }}</td>
+                    <td>{{ b.booking_date }}</td>
+                    <td style="color: green; font-weight: bold;">{{ b.status }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        <br><hr>
+    {% endfor %}    
+    {% if not treks %}
+        <h3 style="color: red;">You have no assigned treks or participants yet.</h3>
+    {% endif %}
+</div></div>
 {% endblock %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+
 {% block sidebar %}
 <a href="/admin_dashboard"><input type="button" value="Dashboard" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
 <a href="/manage_treks"><input type="button" value="Treks" style="width: 290px; height: 50px; margin: 0 auto;"></a><br>
@@ -15,7 +16,7 @@
     <h2>Manage Staff</h2>
 
     <h3 style="text-align: left; color: green;">Current Staff (Limit: 5)</h3>
-    <table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+    <table border="1px solid black" >
         <tr><th>Staff ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Actions</th></tr>
         {% for s in current_staff %}
         <tr>
@@ -28,7 +29,7 @@
     </table>
 
     <h3 style="text-align: left; color: red;">Staff Requests (Pending)</h3>
-    <table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+    <table border="1px solid black" >
         <tr><th>Staff ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Actions</th></tr>
         {% for s in pending_staff %}
         <tr>
@@ -39,6 +40,10 @@
             </td>
         </tr>
         {% endfor %}
+
+        {% if err_msg %}
+            <h4 style="color: red;">{{ err_msg }}</h4>
+        {% endif %}
     </table>
 
     <br><hr><br>

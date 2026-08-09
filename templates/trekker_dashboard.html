@@ -10,67 +10,31 @@
 
 {% block content %}
 
-    <div class="admn-head" style="text-align: center;">        
-        <h2>Welcome, Home!</h2>
-    </div>
-    <br>
-
-    <div class="usr-dash" style="text-align: left;">
-        <h4>Available Treks</h4>
-    </div>
-    <table border="1px solid black;">
-        <tr>
-            <th>Trek Name</th>
-            <th>Location</th>
-            <th>Difficulty</th>
-            <th>Duration</th>
-            <th>Available Slots</th>
-            <th>Actions</th>
-        </tr>
-
-        <!-- Assuming you pass a list called 'available_treks' from app.py -->
-        {% for trek in available_treks %}
-        <tr>
-            <td>{{ trek.name }}</td>
-            <td>{{ trek.location }}</td>
-            <td>{{ trek.difficulty }}</td>
-            <td>{{ trek.duration }}</td>
-            <td>{{ trek.slots }}</td>
-            <td>
-                <a href="/book_trek/{{ trek.id }}">
-                    <input type="button" value="Book Now" style="color:white; background-color: brown;">
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-
+<div class="usr-dash" style="padding: 20px;">
+    <h2 style="text-align: center;">Welcome, Home!</h2>
     <br><br>
 
-    <div class="usr-dash" style="text-align: left;">
-        <h4>My bookings</h4>
-    </div>
-    <table border="1px solid black;">
+    
+    <br><br><br>
+
+    <h3>My bookings</h3>
+    <table border="1px solid black" style="margin: 0 auto;">
         <tr>
             <th>Trek Name</th>
             <th>Booking Date</th>
             <th>Status</th>
-            <th>Action</th>
         </tr>
-
-        <!-- Assuming you pass a list called 'my_bookings' from app.py -->
-        {% for booking in my_bookings %}
+        {% for b, t in bookings %}
         <tr>
-            <td>booking.trek_name </td>
-            <td> booking.date </td>
-            <td>booking.status</td>
-            <td>
-                <a href="/booking_details/{{ booking.id }}">
-                    <input type="button" value="View Details" style="color: blue;">
-                </a>
-            </td>
+            <td>{{ t.trek_name }}</td>
+            <td>{{ b.booking_date }}</td>
+            <td style="color: green;">{{ b.status }}</td>
+
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4" style="color: red;">You have not booked any treks yet.</td>
         </tr>
         {% endfor %}
     </table>
-    <br>
-{% endblock %}
+</div>{% endblock %}
