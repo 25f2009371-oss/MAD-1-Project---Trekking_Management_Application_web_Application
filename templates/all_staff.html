@@ -15,21 +15,35 @@
 
     <h2>Manage Staff</h2>
 
-    <h3 style="text-align: left; color: green;">Current Staff (Limit: 5)</h3>
-    <table border="1px solid black" >
+    <h3 style="text-align: left; color: green;">&nbsp; &nbsp; &nbsp;Current Staff (Limit: 5)</h3>
+
+
+<br>
+<br>
+
+    <table border="1px solid black" style="margin: 0 auto;" >
+
         <tr><th>Staff ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Actions</th></tr>
         {% for s in current_staff %}
         <tr>
             <td>{{ s.user_id }}</td><td>{{ s.full_name }}</td><td>{{ s.email }}</td><td>{{ s.phone }}</td><td>{{ s.status }}</td>
             <td>
-                <a href="/update_status/{{ s.user_id }}/Fired"><input type="button" value="Fire" style="background-color: black; color: white;"></a>
+                <a href="/update_status/{{ s.user_id }}/Fired"><input type="button" value="Blacklist" style="background-color: red; color: white;"></a>
             </td>
         </tr>
         {% endfor %}
     </table>
 
-    <h3 style="text-align: left; color: red;">Staff Requests (Pending)</h3>
-    <table border="1px solid black" >
+    <h3 style="text-align: left; color: red;">&nbsp; &nbsp; &nbsp;Staff Requests (Pending)</h3>
+            <form method="POST" action="">
+&nbsp; &nbsp; &nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="search" name="search" style="width: 500px; height: 30px;">    
+<input type="submit" value="Search" style="height: 30px; cursor: pointer;">
+</form>
+
+<br><br>
+    <table border="1px solid black" style="margin: auto;" >
         <tr><th>Staff ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Actions</th></tr>
         {% for s in pending_staff %}
         <tr>

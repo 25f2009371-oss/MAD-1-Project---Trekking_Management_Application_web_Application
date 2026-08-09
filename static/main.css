@@ -26,10 +26,10 @@
 }
 
 .sml-container{
-
     border: 1px solid blue;
     width: 280px;
     height: 40px;
     display: flex;
     align-items: center;
+    margin: 0 auto;
 }

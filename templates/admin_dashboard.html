@@ -16,12 +16,15 @@
 
 
 {% block content %}
+<div style="text-align: center;">
 <h2>Admin Dashboard</h2>
+</div>
 <br>
 
 {% for d in app_dict %}
 
-<div style="text-align: left;"><h3>Dashboard</h3></div>
+<div style="text-align: center;"><h3>Summary</h3></div>
+
 <div class="sml-container">
 <h4>Total treks: </h4>
 &nbsp; <p>{{ d.t_treks }}</p>
@@ -54,8 +57,8 @@
 
 <br>
 
-<div class="adm-dash" style="text-align: left;"><h4>Recent Bookings</h4></div>
-<table border="1px solid black;">
+<div class="adm-dash"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recent Bookings:</h2></div>
+<table border="1px solid black;" style="margin: 0 auto;">
 
 <tr><th>Booking ID</th><th>User</th><td>Camp</th>
 <th>Booking Date</th><th>Status</th></tr>

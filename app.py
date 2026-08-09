@@ -167,10 +167,28 @@ def add_edit_trek():
     return render_template("add_edit_trek.html", staff_list=staff_members)
 
 
-@app.route('/all_staffs')
+@app.route('/all_staffs', methods=['GET', 'POST'])
 def admin_staff():
-    active_staff = db.session.query(User).filter(User.role == "1", User.status == "Active").all()    
-    pending_staff = db.session.query(User).filter(User.role == "1", User.status == "Pending").all()
+    if request.method == 'POST':
+        search_query = request.form.get("search")
+        active_staff = db.session.query(User).filter(
+            User.role == "1", 
+            User.status == "Active",
+            (User.full_name.like(f"%{search_query}%")) | 
+            (User.email.like(f"%{search_query}%"))
+        ).all()    
+        
+        pending_staff = db.session.query(User).filter(
+            User.role == "1", 
+            User.status == "Pending",
+            (User.full_name.like(f"%{search_query}%")) | 
+            (User.email.like(f"%{search_query}%"))
+        ).all()
+        
+    else:
+        active_staff = db.session.query(User).filter(User.role == "1", User.status == "Active").all()    
+        pending_staff = db.session.query(User).filter(User.role == "1", User.status == "Pending").all()
+        
     return render_template("all_staff.html", current_staff=active_staff, pending_staff=pending_staff)
 
 
@@ -317,11 +335,14 @@ def update_status(uid, new_status):
                 return render_template("all_staff.html", 
                                        current_staff=active_staff, 
                                        pending_staff=pending_staff, 
-                                       err_msg="staff is full remove someone to add another staff")                                       
+                                       err_msg="Staff is full. Remove someone to add another staff.")                                      
         user_to_update.status = new_status
         db.session.commit()
-        
-    return redirect(url_for('admin_staff')) 
+        if user_to_update.role == "1":
+            return redirect(url_for('admin_staff'))
+        elif user_to_update.role == "2":
+            return redirect(url_for('admin_user'))            
+    return redirect(url_for('admin'))
 
 
 @app.route('/delete_trek/<int:trek_id>')
@@ -340,8 +361,8 @@ def book_trek(trek_id):
         return redirect(url_for('login'))
     current_user = db.session.query(User).filter(User.user_id == current_user_id).first()
     if not current_user or current_user.status in ["Deactivated", "Blacklisted"]:
-        session.clear() 
-        return redirect(url_for('login'))
+        data = db.session.query(Trek).all()
+        return render_template("all_treks.html", trekdata=data, err_msg="You can't book now anymore as you are blacklisted.")     
     trek_to_book = db.session.query(Trek).filter(Trek.trek_id == trek_id).first()    
     if trek_to_book and trek_to_book.available_slots > 0 and trek_to_book.status == "Open":
         trek_to_book.available_slots -= 1
@@ -352,6 +373,7 @@ def book_trek(trek_id):
             status="Confirmed")
         db.session.add(new_booking)
         db.session.commit()
+        
     return redirect(url_for('trekker_bookings'))
 
 if __name__ == "__main__":

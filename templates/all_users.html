@@ -13,16 +13,16 @@
 
 {% endblock %}  
 {% block content %}
+<div style="text-align: center;">
 <h1>Users</h1>
+</div>
 <br>
 <br>
 <div style="margin: 0 auto;">
-<!-- 1. Wrap the search inputs in a POST form -->
 <form method="POST" action="">
-    <!-- The name="search" is mandatory for Python to catch it -->
+ &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     <input type="search" name="search" style="width: 500px; height: 30px;">
-    
-    <!-- This MUST be type="submit" -->
     <input type="submit" value="search" style="height: 30px; cursor: pointer;">
 </form>
 
@@ -31,7 +31,7 @@
 </div>
 <br>
 <br>
-<table border="1px solid black">
+<table border="1px solid black" style= "margin: 0 auto;">
 
 <tr>
 <th>User_ID</th>
@@ -51,8 +51,13 @@
 <td>{{t.phone}}</td>
 <td>{{t.status}}</td>
 <td>
-<a href="#"><input type="button" value="Blacklisted" style="background-color: red; color: white; cursor: pointer; padding: 5px 10px;">
+    {% if t.status == "Active" %}
+        <a href="/update_status/{{ t.user_id }}/Blacklisted">
+            <input type="button" value="Blacklist" style="background-color: red; color: white; cursor: pointer; padding: 5px 10px;">
         </a>
+    {% else %}
+        <input type="button" value="Blacklisted" disabled style="background-color: gray; color: white; cursor: not-allowed; padding: 5px 10px;">
+    {% endif %}
 </td>
 </tr>
 {% endfor %}

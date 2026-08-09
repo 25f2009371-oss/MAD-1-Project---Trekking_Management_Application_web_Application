@@ -52,5 +52,13 @@
         </tr>
         {% endfor %}
     </table>
+    {% if err_msg %}
+    <div style="text-align: center;">
+        <h3 style="color: red;">
+            {{ err_msg }}
+        </h3>
+    </div>
+    <br>
+{% endif %}
 </div>
 {% endblock %}
