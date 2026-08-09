@@ -40,7 +40,7 @@ app = None
 def setup_app():
     global app
     app = Flask(__name__)
-    app.secret_key = "super_secret_key_for_iitm"  
+    app.secret_key = "Arohan"  
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///databse.sqlite3"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
@@ -56,22 +56,21 @@ setup_app()
 def index():
     return render_template("index.html")
 
-
+@app.route('/logout')
 @app.route('/login/', methods=["GET", "POST"])
-@app.route('/logout', methods=["GET", "POST"])
 def login():
     if request.path == '/logout':
         session.clear()
         return redirect(url_for('login'))
-
+        
     if request.method == "POST":
         uname = request.form.get("emailid")
         pwd = request.form.get("pwd")        
-        user = db.session.query(User).filter(User.email == uname).first()
+        user = db.session.query(User).filter(User.email == uname).first()    
         
         if user and user.password == pwd:
             session['user_id'] = user.user_id
-            session['role'] = str(user.role)
+            session['role'] = str(user.role)          
             
             if session['role'] == "0":
                 return redirect(url_for('admin'))
@@ -80,7 +79,7 @@ def login():
             elif session['role'] == "2":
                 return redirect(url_for('trekker'))
         else:
-            return redirect(url_for("register"))
+            return render_template("login.html", err_msg="Wrong email or password.")
 
     return render_template('login.html')
 
