@@ -361,22 +361,36 @@ def book_trek(trek_id):
     current_user_id = session.get('user_id')
     if not current_user_id:
         return redirect(url_for('login'))
+        
     current_user = db.session.query(User).filter(User.user_id == current_user_id).first()
+    
     if not current_user or current_user.status in ["Deactivated", "Blacklisted"]:
         data = db.session.query(Trek).all()
-        return render_template("all_treks.html", trekdata=data, err_msg="You can't book now anymore as you are blacklisted.")     
-    trek_to_book = db.session.query(Trek).filter(Trek.trek_id == trek_id).first()    
-    if trek_to_book and trek_to_book.available_slots > 0 and trek_to_book.status == "Open":
-        trek_to_book.available_slots -= 1
-        new_booking = Booking(
-            user_id=current_user.user_id, 
-            trek_id=trek_to_book.trek_id, 
-            booking_date=datetime.now().date(), 
-            status="Confirmed")
-        db.session.add(new_booking)
-        db.session.commit()
+        return render_template("all_treks.html", trekdata=data, err_msg="You can't book as you are blacklisted.")    
         
+    trek_to_book = db.session.query(Trek).filter(Trek.trek_id == trek_id).first()    
+    
+    if trek_to_book:
+        if trek_to_book.available_slots <= 0:
+            data = db.session.query(Trek).all()
+            return render_template("all_treks.html", trekdata=data, err_msg="Sorry, this trek is completely full!")
+            
+        elif trek_to_book.status.lower() != "open":
+            data = db.session.query(Trek).all()
+            return render_template("all_treks.html", trekdata=data, err_msg=f"Sorry, you cannot book this. The current status is '{trek_to_book.status}'.")
+            
+        else:
+            trek_to_book.available_slots -= 1
+            new_booking = Booking(user_id=current_user.user_id, 
+                trek_id=trek_to_book.trek_id, 
+                booking_date=datetime.now().date(), # <-- Removed str() here!
+                status="Confirmed")
+            db.session.add(new_booking)
+            db.session.commit()
+            return redirect(url_for('trekker_bookings'))
+            
     return redirect(url_for('trekker_bookings'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
