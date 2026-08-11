@@ -1,6 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from models import db, User, Trek, Booking
+
+#app.py is basically my controller
+#importing libraries for my controller
+
+from flask import Flask, render_template, url_for, session, redirect, request
 from datetime import datetime
+from models import db, User, Trek,Booking
+from datetime import datetime
+
+
+
 
 def get_all_staffs():
     stff_data = db.session.query(User).filter(User.role == "1").all() 
