@@ -1,18 +1,27 @@
 
 #app.py is basically my controller
 #importing libraries for my controller
-
 from flask import Flask, render_template, url_for, session, redirect, request
 from datetime import datetime
 from models import db, User, Trek,Booking
 from datetime import datetime
 
-
-
-
-def get_all_staffs():
-    stff_data = db.session.query(User).filter(User.role == "1").all() 
+#getting staff data
+def get_all_staff_data():
+    stff_data=db.session.query("User").filter(User.roll=="1").all
     return stff_data
+
+
+#getting admin_dashboard_stats
+
+
+def get_admin_dashboard_stats():
+    total_treks .db.session.query(Trek).count()
+    total_user=db.session.query(User).filter(User.role==2).count()
+    t_staff=db.session.query(User).filter(User.role=="1", User.status=="Active").count()
+    total_bookings=db.session.query(Booking).count()
+    pass
+    
 
 def get_admin_dashboard_stats():
     total_treks = db.session.query(Trek).count()
