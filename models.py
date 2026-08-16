@@ -9,21 +9,6 @@ from flask_sqlalchemy import SQLAlchemy
 db=SQLAlchemy()
 
 #creating class called Users in which will work as table and have name users
-class User(db.Model):
-    __tablename__="users"
-   user_id=db.Column(db.Integer, primary_key=True,unique=True)
-    full_name=db.Column(db.String, nullable=False)
-    email=db.Column(db.String, nullable=False,unique=True)
-    password=db.Column(db.String, nullable=False)
-    Phone=db.Column(db.String,unique=True,nullable=False)
-    role=db.Column(db.String,nullable=False)
-    bookings = db.relationship("Booking", cascade="all,delete" , backref="bookings")
-
-
-
-
-
-
 db = SQLAlchemy()
 
 class User(db.Model):
