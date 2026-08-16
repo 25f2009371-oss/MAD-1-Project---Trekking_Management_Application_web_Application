@@ -6,6 +6,16 @@ from datetime import datetime
 from models import db, User, Trek,Booking
 from datetime import datetime
 
+
+#app.py is basically my controller
+
+from flask import Flask, request, 
+
+
+
+
+
+
 #getting staff data
 def get_all_staff_data():
     stff_data=db.session.query("User").filter(User.roll=="1").all
