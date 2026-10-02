@@ -1,7 +1,7 @@
 # MAD-1->Trekking Management Web Application
-
-# I kept the implementation as simple as possible and used minimal agentic AI. Apart from some advanced searching and querying of the SQL database using Python and SQLAlchemy, the rest of the project was designed and implemented entirely by me.
-
+_______________________________________________
+I kept the implementation as simple as possible and used minimal agentic AI. Apart from some advanced searching and querying of the SQL database using Python and SQLAlchemy, the rest of the project was designed and implemented entirely by me.
+_______________________________________________
 
 
 Templates
